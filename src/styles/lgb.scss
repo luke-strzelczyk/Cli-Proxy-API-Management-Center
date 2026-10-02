@@ -1,0 +1,172 @@
+/**
+ * letsgobold theme for the console (fork branch `lgb`, 02.10.2026).
+ * One file, loaded last: colour tokens from lgb-cloudpanel/brand/lgb.css (light + dark),
+ * brand fonts (inlined by the single-file build), sharp corners, wordmark in the sidebar.
+ * Upstream components keep their own variable names; we only redefine the values.
+ */
+
+@font-face {
+  font-family: 'Aspekta';
+  src: url('../assets/fonts/AspektaVF.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'LGBMono';
+  src: url('../assets/fonts/roboto-mono-latin-ext-wght-normal.woff2') format('woff2');
+  font-weight: 100 700;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'LGBMono';
+  src: url('../assets/fonts/roboto-mono-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 700;
+  font-display: swap;
+}
+
+@mixin lgb-light {
+  --bg-secondary: #f1efe8;   // page
+  --bg-primary: #fcfbf7;     // cards
+  --bg-tertiary: #f8f6f0;    // hover / secondary
+  --bg-hover: var(--bg-tertiary);
+  --bg-quinary: #f6f4ee;
+  --bg-error-light: rgba(227, 117, 101, 0.1);
+  --floating-surface: #fcfbf7;
+  --floating-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+
+  --text-primary: #282828;
+  --text-secondary: #54524b;
+  --text-tertiary: #8a877f;
+  --text-quaternary: #cbc7ba;
+  --text-muted: var(--text-tertiary);
+
+  --border-color: #e0ddd2;
+  --border-secondary: var(--border-color);
+  --border-primary: #cbc7ba;
+  --border-hover: #282828;
+
+  --primary-color: #282828;   // ink = action
+  --primary-hover: #e37565;   // coral on hover, like the panel buttons
+  --primary-active: #d9604f;
+  --primary-contrast: #fcfbf7;
+
+  --success-color: #2e9960;
+  --quota-medium-color: #c98a1b;
+  --warning-color: #c98a1b;
+  --error-color: #e37565;
+  --danger-color: var(--error-color);
+  --info-color: #54524b;
+
+  --warning-bg: rgba(201, 138, 27, 0.1);
+  --warning-border: rgba(201, 138, 27, 0.4);
+  --warning-text: #8a5f10;
+
+  --success-badge-bg: rgba(46, 153, 96, 0.1);
+  --success-badge-text: #1f7a4a;
+  --success-badge-border: rgba(46, 153, 96, 0.45);
+
+  --failure-badge-bg: rgba(227, 117, 101, 0.12);
+  --failure-badge-text: #b3483a;
+  --failure-badge-border: rgba(227, 117, 101, 0.45);
+
+  --count-badge-bg: rgba(40, 40, 40, 0.08);
+  --count-badge-text: #282828;
+
+  --amber-color: #c98a1b;
+  --amber-text: #8a5f10;
+  --viz-success: #2e9960;
+  --viz-failure: #e37565;
+  --shadow: none;
+  --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.1);
+  --radius-md: 0;
+}
+
+@mixin lgb-dark {
+  --bg-secondary: #101010;
+  --bg-primary: #191919;
+  --bg-tertiary: #202020;
+  --bg-hover: var(--bg-tertiary);
+  --bg-quinary: #1d1d1d;
+  --bg-error-light: rgba(227, 117, 101, 0.14);
+  --floating-surface: #191919;
+  --floating-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+
+  --text-primary: #f1efe8;
+  --text-secondary: #c9c6be;
+  --text-tertiary: #8f8c85;
+  --text-quaternary: #3d3d3d;
+  --text-muted: var(--text-tertiary);
+
+  --border-color: #2b2b2b;
+  --border-secondary: var(--border-color);
+  --border-primary: #3d3d3d;
+  --border-hover: #f1efe8;
+
+  --primary-color: #f1efe8;
+  --primary-hover: #e37565;
+  --primary-active: #fe6f5e;
+  --primary-contrast: #101010;
+
+  --success-color: #3fae72;
+  --quota-medium-color: #d9a441;
+  --warning-color: #d9a441;
+  --error-color: #e37565;
+  --danger-color: var(--error-color);
+  --info-color: #c9c6be;
+
+  --warning-bg: rgba(217, 164, 65, 0.12);
+  --warning-border: rgba(217, 164, 65, 0.4);
+  --warning-text: #e8bb63;
+
+  --success-badge-bg: rgba(63, 174, 114, 0.14);
+  --success-badge-text: #6fcf97;
+  --success-badge-border: rgba(63, 174, 114, 0.45);
+
+  --failure-badge-bg: rgba(227, 117, 101, 0.16);
+  --failure-badge-text: #f0948a;
+  --failure-badge-border: rgba(227, 117, 101, 0.45);
+
+  --count-badge-bg: rgba(241, 239, 232, 0.1);
+  --count-badge-text: #f1efe8;
+
+  --amber-color: #d9a441;
+  --amber-text: #e8bb63;
+  --viz-success: #3fae72;
+  --viz-failure: #e37565;
+  --shadow: none;
+  --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.5);
+  --radius-md: 0;
+}
+
+:root { @include lgb-light; }
+[data-theme='white'] { @include lgb-light; }
+[data-theme='dark'] { @include lgb-dark; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='white']):not([data-theme='light']) { @include lgb-dark; }
+}
+
+// sharp corners everywhere the components hard-coded a radius
+* { border-radius: 0 !important; }
+
+// sidebar brand: the wordmark alone, no "CPAMC" text
+.sidebar-brand-logo {
+  width: auto !important;
+  height: 20px !important;
+  max-width: 100% !important;
+  object-fit: contain;
+  box-shadow: none !important;
+}
+.sidebar-brand-text { display: none !important; }
+[data-theme='dark'] .sidebar-brand-logo { filter: invert(1) hue-rotate(180deg); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='white']):not([data-theme='light']) .sidebar-brand-logo { filter: invert(1) hue-rotate(180deg); }
+}
+
+// labels in the panel's mono voice
+.nav-group-label,
+th {
+  font-family: 'LGBMono', ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
