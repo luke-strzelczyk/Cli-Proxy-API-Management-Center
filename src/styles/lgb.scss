@@ -158,9 +158,14 @@
   box-shadow: none !important;
 }
 .sidebar-brand-text { display: none !important; }
-[data-theme='dark'] .sidebar-brand-logo { filter: invert(1) hue-rotate(180deg); }
+// the wordmark is ink on transparent; in the dark theme invert it wherever it appears
+[data-theme='dark'] .sidebar-brand-logo,
+[data-theme='dark'] img[alt='Logo'],
+[data-theme='dark'] img[alt^='CPAMC'] { filter: invert(1) hue-rotate(180deg); }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='white']):not([data-theme='light']) .sidebar-brand-logo { filter: invert(1) hue-rotate(180deg); }
+  :root:not([data-theme='white']):not([data-theme='light']) .sidebar-brand-logo,
+  :root:not([data-theme='white']):not([data-theme='light']) img[alt='Logo'],
+  :root:not([data-theme='white']):not([data-theme='light']) img[alt^='CPAMC'] { filter: invert(1) hue-rotate(180deg); }
 }
 
 // labels in the panel's mono voice
