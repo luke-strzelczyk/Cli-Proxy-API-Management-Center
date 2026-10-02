@@ -173,6 +173,8 @@ th {
 
 // login splash + About: the wordmark is wide, not a square avatar (CSS modules hash the
 // class names, hence the attribute selectors)
+img[alt='Logo'],
+img[alt^='CPAMC'],
 [class*='splashLogo'],
 [class*='aboutLogo'] {
   width: auto !important;
@@ -182,4 +184,5 @@ th {
   box-shadow: none !important;
   background: transparent !important;
   padding: 0 !important;
+  border: 0 !important;
 }
