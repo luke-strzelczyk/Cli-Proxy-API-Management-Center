@@ -8,6 +8,7 @@
 @use './themes.scss';
 @use './components.scss';
 @use './layout.scss';
+@use './lgb.scss'; // letsgobold theme: tokens, fonts, brand — keep last so it wins
 
 body {
   background-color: var(--bg-secondary);
