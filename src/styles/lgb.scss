@@ -170,3 +170,16 @@ th {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+// login splash + About: the wordmark is wide, not a square avatar (CSS modules hash the
+// class names, hence the attribute selectors)
+[class*='splashLogo'],
+[class*='aboutLogo'] {
+  width: auto !important;
+  height: 28px !important;
+  max-width: 220px !important;
+  object-fit: contain !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
