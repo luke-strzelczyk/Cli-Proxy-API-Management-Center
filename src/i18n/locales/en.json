@@ -57,25 +57,25 @@
     "unsaved_changes_message": "You have unsaved changes. Leaving now will discard them. Do you want to leave?"
   },
   "title": {
-    "login": "CLI Proxy API Management Center",
+    "login": "Sign in",
     "abbr": "CPAMC"
   },
   "splash": {
-    "title": "CLI Proxy API",
-    "subtitle": "Management Center"
+    "title": "letsgobold",
+    "subtitle": "proxy console"
   },
   "login": {
-    "subtitle": "Connect to CLI Proxy API v8 or later",
-    "connection_current": "Current URL",
-    "connection_auto_hint": "The system will automatically use the current URL for connection",
-    "custom_connection_label": "Custom Connection URL:",
+    "subtitle": "The console for proxy.letsgobold.dev",
+    "connection_current": "Connected to",
+    "connection_auto_hint": "",
+    "custom_connection_label": "Use a different server",
     "custom_connection_placeholder": "Eg: https://example.com:8317",
     "custom_connection_hint": "By default the current URL is used. Override it here if needed.",
-    "remember_password_label": "Remember password",
-    "management_key_label": "Management Key:",
-    "management_key_placeholder": "Enter the management key",
-    "submit_button": "Login",
-    "submitting": "Connecting...",
+    "remember_password_label": "Stay signed in on this device",
+    "management_key_label": "Management key",
+    "management_key_placeholder": "Paste the key from keys.txt",
+    "submit_button": "Sign in",
+    "submitting": "Signing in…",
     "error_backend_detail": "Backend response",
     "error_required": "Please fill in complete connection information",
     "error_invalid": "Connection failed, please check the server address, Management API, and management key",

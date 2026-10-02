@@ -186,3 +186,127 @@ img[alt^='CPAMC'],
   padding: 0 !important;
   border: 0 !important;
 }
+
+// ── sign-in page ──────────────────────────────────────────────────────────────
+// One quiet column: wordmark, a plain card, the key field, one button. The black
+// "CLI PROXY API" half of upstream's page is gone; the memorable thing is the
+// wordmark and a single coral focus ring. Attribute selectors: CSS modules hash names.
+[class*='LoginPage'] [class*='brandPanel'],
+[class*='brandPanel'] { display: none !important; }
+
+[class*='formPanel'] {
+  background: var(--bg-secondary) !important;
+  padding: 48px 20px !important;
+  min-height: 100vh;
+}
+[class*='formContent'] {
+  max-width: 380px !important;
+  gap: 28px !important;
+  align-items: stretch !important;
+}
+[class*='formContent'] > img[alt='Logo'] {
+  align-self: flex-start;
+  height: 24px !important;
+  margin: 0 0 4px 0;
+}
+
+[class*='loginCard'] {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
+  padding: 32px !important;
+  gap: 22px !important;
+}
+[class*='loginHeader'] { text-align: left !important; gap: 6px !important; }
+[class*='titleRow'] { justify-content: space-between !important; flex-wrap: nowrap !important; }
+[class*='loginCard'] [class*='title'] {
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+[class*='loginCard'] [class*='subtitle'] { font-size: 14px !important; color: var(--text-secondary) !important; }
+[class*='languageSelect'] { min-width: 0 !important; }
+[class*='languageSelect'] select,
+[class*='languageSelect'] button {
+  font-size: 12px !important;
+  padding: 4px 8px !important;
+  min-height: 0 !important;
+  height: 28px !important;
+}
+
+// "Connected to proxy.letsgobold.dev": one line, no dashed box
+[class*='connectionBox'] {
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 12px 0 !important;
+  flex-direction: row !important;
+  align-items: baseline !important;
+  gap: 8px !important;
+  flex-wrap: wrap;
+}
+[class*='connectionBox'] [class*='label'] { font-size: 13px !important; color: var(--text-tertiary) !important; }
+[class*='connectionBox'] [class*='value'] { font-size: 14px !important; font-weight: 500 !important; }
+[class*='connectionBox'] [class*='hint']:empty { display: none; }
+[class*='connectionBox'] [class*='hint'] { display: none !important; }
+
+// field, checkboxes, button
+[class*='loginCard'] label,
+[class*='loginCard'] [class*='toggleLabel'] { font-size: 14px !important; font-weight: 500 !important; color: var(--text-primary) !important; }
+[class*='loginCard'] input[type='text'],
+[class*='loginCard'] input[type='password'],
+[class*='loginCard'] input[type='url'] {
+  height: 44px !important;
+  font-size: 15px !important;
+  border: 1px solid var(--border-primary) !important;
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  box-shadow: none !important;
+}
+[class*='loginCard'] input:focus,
+[class*='loginCard'] input:focus-visible {
+  outline: 2px solid #e37565 !important;
+  outline-offset: 1px !important;
+  border-color: var(--border-primary) !important;
+}
+[class*='loginCard'] input[type='checkbox'] { width: 16px !important; height: 16px !important; accent-color: #282828; }
+[data-theme='dark'] [class*='loginCard'] input[type='checkbox'] { accent-color: #f1efe8; }
+[class*='toggleAdvanced'] { gap: 10px !important; }
+
+[class*='loginCard'] button[type='submit'],
+[class*='loginCard'] .btn-primary {
+  height: 46px !important;
+  width: 100%;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0;
+  background: var(--primary-color) !important;
+  color: var(--primary-contrast) !important;
+  border: 1px solid var(--primary-color) !important;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+[class*='loginCard'] button[type='submit']:hover:not([disabled]),
+[class*='loginCard'] .btn-primary:hover:not([disabled]) {
+  background: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+  color: #fcfbf7 !important;
+}
+[class*='loginCard'] button[type='submit'][disabled] { opacity: 0.45 !important; cursor: default; }
+[class*='loginCard'] button[type='submit']:focus-visible { outline: 2px solid #e37565 !important; outline-offset: 2px; }
+
+[class*='errorBox'] {
+  background: rgba(227, 117, 101, 0.1) !important;
+  border: 1px solid rgba(227, 117, 101, 0.45) !important;
+  color: var(--text-primary) !important;
+}
+
+// splash (first paint): wordmark + two quiet lines, no pulsing card
+[class*='splashLogo'] { animation: none !important; }
+[class*='splashTitle'] { font-size: 22px !important; font-weight: 600 !important; letter-spacing: -0.02em; }
+[class*='splashSubtitle'] { color: var(--text-secondary) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  [class*='loginCard'] * { transition: none !important; animation: none !important; }
+}
