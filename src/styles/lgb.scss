@@ -1,7 +1,7 @@
 /**
  * letsgobold theme for the console (fork branch `lgb`, 02.10.2026).
  * One file, loaded last: colour tokens from lgb-cloudpanel/brand/lgb.css (light + dark),
- * brand fonts (inlined by the single-file build), sharp corners, wordmark in the sidebar.
+ * brand fonts (inlined by the single-file build), sharp corners, the name in type (no logo).
  * Upstream components keep their own variable names; we only redefine the values.
  */
 
@@ -149,24 +149,17 @@
 // sharp corners everywhere the components hard-coded a radius
 * { border-radius: 0 !important; }
 
-// sidebar brand: the wordmark alone, no "CPAMC" text
-.sidebar-brand-logo {
-  width: auto !important;
-  height: 20px !important;
-  max-width: 100% !important;
-  object-fit: contain;
-  box-shadow: none !important;
+// The name in type, no logo anywhere (04.10.2026): sidebar, sign-in, splash, About.
+.lgb-wordmark {
+  font-family: 'LGBMono', ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--text-primary);
+  white-space: nowrap;
 }
 .sidebar-brand-text { display: none !important; }
-// the wordmark is ink on transparent; in the dark theme invert it wherever it appears
-[data-theme='dark'] .sidebar-brand-logo,
-[data-theme='dark'] img[alt='Logo'],
-[data-theme='dark'] img[alt^='CPAMC'] { filter: invert(1) hue-rotate(180deg); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='white']):not([data-theme='light']) .sidebar-brand-logo,
-  :root:not([data-theme='white']):not([data-theme='light']) img[alt='Logo'],
-  :root:not([data-theme='white']):not([data-theme='light']) img[alt^='CPAMC'] { filter: invert(1) hue-rotate(180deg); }
-}
 
 // labels in the panel's mono voice
 .nav-group-label,
@@ -174,22 +167,6 @@ th {
   font-family: 'LGBMono', ui-monospace, monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-// login splash + About: the wordmark is wide, not a square avatar (CSS modules hash the
-// class names, hence the attribute selectors)
-img[alt='Logo'],
-img[alt^='CPAMC'],
-[class*='splashLogo'],
-[class*='aboutLogo'] {
-  width: auto !important;
-  height: 28px !important;
-  max-width: 220px !important;
-  object-fit: contain !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  padding: 0 !important;
-  border: 0 !important;
 }
 
 // ── sign-in page ──────────────────────────────────────────────────────────────
@@ -209,9 +186,9 @@ img[alt^='CPAMC'],
   gap: 28px !important;
   align-items: stretch !important;
 }
-[class*='formContent'] > img[alt='Logo'] {
+[class*='formContent'] > .lgb-wordmark {
   align-self: flex-start;
-  height: 24px !important;
+  font-size: 15px;
   margin: 0 0 4px 0;
 }
 
@@ -307,9 +284,13 @@ img[alt^='CPAMC'],
   color: var(--text-primary) !important;
 }
 
-// splash (first paint): wordmark + two quiet lines, no pulsing card
-[class*='splashLogo'] { animation: none !important; }
-[class*='splashTitle'] { font-size: 22px !important; font-weight: 600 !important; letter-spacing: -0.02em; }
+// splash (first paint): the name in mono, one quiet line, the loader bar
+[class*='splashTitle'] {
+  font-family: 'LGBMono', ui-monospace, monospace !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
 [class*='splashSubtitle'] { color: var(--text-secondary) !important; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -319,3 +300,11 @@ img[alt^='CPAMC'],
 // English only: the language switcher is hidden on the sign-in card and in the top bar
 [class*='languageSelect'],
 .language-menu { display: none !important; }
+
+// About: the name in the same mono voice as everywhere else
+[class*='aboutTitle'] {
+  font-family: 'LGBMono', ui-monospace, monospace !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}

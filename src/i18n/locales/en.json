@@ -63,11 +63,11 @@
     "abbr": "CPAMC"
   },
   "splash": {
-    "title": "letsgobold",
-    "subtitle": "proxy console"
+    "title": "proxy.letsgobold.dev",
+    "subtitle": "console"
   },
   "login": {
-    "subtitle": "The console for proxy.letsgobold.dev",
+    "subtitle": "Management console",
     "connection_current": "Connected to",
     "connection_edit": "Change",
     "connection_done": "Done",
@@ -1950,7 +1950,7 @@
     "models_catalog_refresh_success": "Model catalog updated.",
     "models_catalog_refresh_failed": "Model catalog update failed",
     "title": "Management Center Info",
-    "about_title": "CLI Proxy API Management Center",
+    "about_title": "proxy.letsgobold.dev",
     "models_title": "Available Models",
     "models_desc": "Click “Refresh list” to see the latest available models. If a new model is missing, try “Update model catalog”.",
     "models_loading": "Loading available models...",
