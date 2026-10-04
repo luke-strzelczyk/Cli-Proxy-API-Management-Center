@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { IconChevronDown, IconRefreshCw } from '@/components/ui/icons';
 import type { ClaudeQuotaState, CodexQuotaState, ResolvedTheme } from '@/types';
 import { getQuotaDisplayName } from '@/utils/quota/identity';
+import { maskEmails } from '@/utils/lgbMask';
 import {
   getAuthFileIcon,
   getThemeSurfaceIconBackground,
@@ -71,7 +72,7 @@ export function QuotaCard(props: QuotaCardProps) {
   const file = entry.file;
   const retainedClaudeUsage =
     entry.type === 'claude' && hasClaudeUsageData(quota as ClaudeQuotaState | undefined);
-  const displayName = getQuotaDisplayName(file);
+  const displayName = maskEmails(getQuotaDisplayName(file)); // lgb: never the full address
 
   // Capture the entrance delay only at mount, without a render-time ref read.
   const [mountEntranceDelayMs] = useState<number | null>(entranceDelayMs ?? null);
@@ -143,7 +144,7 @@ export function QuotaCard(props: QuotaCardProps) {
       style={entranceStyle}
       data-quota-glance={glance ? '' : undefined}
     >
-      <header className={styles.head}>
+      <header className={`lgb-quota-head ${styles.head}`}>
         <span
           className={styles.iconWrap}
           title={typeLabel}

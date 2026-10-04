@@ -8,7 +8,7 @@
  * - useHeaderRefresh 单槽位：本页唯一注册者，全局刷新 = 重取文件列表。
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { authFilesApi } from '@/services/api';
 import { Button } from '@/components/ui/Button';
@@ -25,6 +25,8 @@ import { useRevealGroup } from '@/hooks/motion';
 import { useAuthStore, useQuotaStore, useThemeStore } from '@/stores';
 import type { AuthFileItem, ResolvedTheme } from '@/types';
 import { getQuotaCacheKey } from '@/utils/quota/identity';
+import { maskEmails } from '@/utils/lgbMask';
+import { getTypeLabel } from '@/features/authFiles/constants';
 import { ProviderTabs } from '@/features/authFiles/components/ProviderTabs';
 import { QuotaHeader } from './components/QuotaHeader';
 import { QuotaCard } from './components/QuotaCard';
@@ -70,7 +72,7 @@ const SKELETON_CARD_COUNT = 6;
  * Existing providers display filenames; Devin's card and timeline share an
  * identity-aware display label. Keep the filename fallback stable for memoization.
  */
-const displayNameFor = (name: string) => name;
+const displayNameFor = (name: string) => maskEmails(name); // lgb: never the full address
 
 export function QuotaPage() {
   const { t } = useTranslation();

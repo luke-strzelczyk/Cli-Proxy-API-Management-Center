@@ -82,6 +82,7 @@ export function CodexQuotaBody({
 
   return (
     <>
+      <div className="lgb-quota-meta">
       {(planLabel ||
         expiryDisplay ||
         creditsUnlimited ||
@@ -208,6 +209,7 @@ export function CodexQuotaBody({
           );
         })
       )}
+      </div>
     </>
   );
 }

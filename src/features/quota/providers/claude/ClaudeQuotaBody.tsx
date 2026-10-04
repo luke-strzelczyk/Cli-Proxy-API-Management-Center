@@ -198,6 +198,7 @@ export function ClaudeQuotaBody({
           );
         })
       )}
+      </div>
     </>
   );
 }
