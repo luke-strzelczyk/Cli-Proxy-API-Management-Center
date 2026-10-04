@@ -8,7 +8,6 @@ import zhCN from './locales/zh-CN.json';
 import zhTW from './locales/zh-TW.json';
 import en from './locales/en.json';
 import ru from './locales/ru.json';
-import { getInitialLanguage } from '@/utils/language';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -17,8 +16,9 @@ i18n.use(initReactI18next).init({
     en: { translation: en },
     ru: { translation: ru },
   },
-  lng: getInitialLanguage(),
-  fallbackLng: 'zh-CN',
+  // letsgobold: English only — no browser detection, no switcher (lgb.scss hides it)
+  lng: 'en',
+  fallbackLng: 'en',
   interpolation: {
     escapeValue: false, // React 已经转义
   },
