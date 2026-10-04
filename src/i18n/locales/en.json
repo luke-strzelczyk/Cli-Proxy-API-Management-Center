@@ -61,11 +61,11 @@
     "abbr": "CPAMC"
   },
   "splash": {
-    "title": "letsgobold",
-    "subtitle": "proxy console"
+    "title": "proxy.letsgobold.dev",
+    "subtitle": "console"
   },
   "login": {
-    "subtitle": "The console for proxy.letsgobold.dev",
+    "subtitle": "Management console",
     "connection_current": "Connected to",
     "connection_auto_hint": "",
     "custom_connection_label": "Use a different server",
@@ -1752,7 +1752,7 @@
   },
   "system_info": {
     "title": "Management Center Info",
-    "about_title": "CLI Proxy API Management Center",
+    "about_title": "proxy.letsgobold.dev",
     "models_title": "Available Models",
     "models_desc": "Shows the /models response and uses saved API keys for auth automatically.",
     "models_loading": "Loading available models...",
