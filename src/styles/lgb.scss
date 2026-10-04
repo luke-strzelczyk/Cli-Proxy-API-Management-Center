@@ -308,3 +308,9 @@ th {
   font-weight: 500 !important;
   letter-spacing: -0.01em;
 }
+
+// Dark theme: upstream forces `[data-theme='dark'] .btn { color: #fff }`, which lands white
+// text on our light (cream) primary button — unreadable (OAuth Login, 04.10.2026). Primary
+// buttons take the contrast token again; the blue "featured" buttons keep white text.
+[data-theme='dark'] .btn.btn-primary { color: var(--primary-contrast) !important; }
+[data-theme='dark'] [class*='featuredCard'] .btn.btn-primary { color: #fff !important; }
