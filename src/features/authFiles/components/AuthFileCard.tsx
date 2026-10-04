@@ -328,7 +328,7 @@ export function AuthFileCard(props: AuthFileCardProps) {
           <div className={styles.toggleWrap}>
             <span className={styles.toggleLabel}>{t('auth_files.status_toggle_label')}</span>
             <ToggleSwitch
-              ariaLabel={t('auth_files.card_toggle', { name: file.name })}
+              ariaLabel={t('auth_files.card_toggle', { name: maskEmails(file.name) })}
               checked={!file.disabled}
               disabled={
                 disableControls ||

@@ -1,3 +1,4 @@
+import { maskEmails } from '@/utils/lgbMask';
 import { parseLogLine } from '@/features/logs/model/logParsing';
 import {
   resolveStatusGroup,
@@ -15,7 +16,8 @@ export function createLogParserCache() {
   let cache = new Map<number, LogEntry>();
   return (buffer: LogBuffer): LogEntry[] => {
     const next = new Map<number, LogEntry>();
-    const entries = buffer.buffer.map((raw, index) => {
+    const entries = buffer.buffer.map((source, index) => {
+      const raw = maskEmails(source); // lgb: log lines quote credential file names
       const id = buffer.bufferStart + index;
       const previous = cache.get(id);
       const entry = previous?.raw === raw ? previous : { ...parseLogLine(raw), id };

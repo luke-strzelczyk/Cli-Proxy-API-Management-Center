@@ -1,3 +1,4 @@
+import { maskEmails } from '@/utils/lgbMask';
 import { useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -948,7 +949,7 @@ export function OAuthPage() {
                         <span className={styles.keyValueKey}>
                           {t('vertex_import.result_email')}
                         </span>
-                        <span className={styles.keyValueValue}>{vertexState.result.email}</span>
+                        <span className={styles.keyValueValue}>{maskEmails(vertexState.result.email)}</span>
                       </div>
                     )}
                     {vertexState.result.location && (
