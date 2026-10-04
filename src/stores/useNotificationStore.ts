@@ -67,6 +67,12 @@ export const useNotificationStore = create<NotificationState>((set) => ({
   },
 
   showConfirmation: (options) => {
+    // lgb: confirmations quote file names — never the full address
+    options = {
+      ...options,
+      ...(typeof options.title === 'string' ? { title: maskEmails(options.title) } : {}),
+      ...(typeof options.message === 'string' ? { message: maskEmails(options.message) } : {}),
+    };
     set({
       confirmation: {
         isOpen: true,

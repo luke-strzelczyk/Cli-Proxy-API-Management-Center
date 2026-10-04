@@ -352,7 +352,9 @@ th {
   box-shadow: none !important;
   transform: none !important;
 }
-.lgb-quota-group + .lgb-quota-row { border-top: 0 !important; }
+// hairline above every account, and one closing the last account of the list
+.lgb-quota-list > .lgb-quota-row:last-child { border-bottom: 1px solid var(--border-color) !important; }
+.lgb-quota-group { padding-bottom: 10px; }
 
 .lgb-quota-head {
   grid-column: 1;

@@ -1,3 +1,4 @@
+import { maskEmails } from '@/utils/lgbMask';
 import { useCallback, useId, useMemo, type MouseEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
@@ -129,7 +130,7 @@ export function AuthFileDetailsSheet(props: AuthFileDetailsSheetProps) {
       size="md"
       closeDisabled={editor?.saving === true}
       eyebrow={t('auth_files.prefix_proxy_button')}
-      title={editor?.fileName ?? ''}
+      title={maskEmails(editor?.fileName ?? '')}
       footer={
         <>
           <Button
@@ -179,7 +180,7 @@ export function AuthFileDetailsSheet(props: AuthFileDetailsSheetProps) {
               {editor.error && <div className={styles.error}>{editor.error}</div>}
               <div className={styles.jsonWrapper}>
                 <label className={styles.label}>{t('auth_files.prefix_proxy_info_label')}</label>
-                <textarea className={styles.textarea} rows={8} readOnly value={displayInfoText} />
+                <textarea className={styles.textarea} rows={8} readOnly value={maskEmails(displayInfoText)} />
               </div>
               <div className={styles.jsonWrapper}>
                 <label className={styles.label}>
@@ -188,9 +189,9 @@ export function AuthFileDetailsSheet(props: AuthFileDetailsSheetProps) {
                     : t('auth_files.prefix_proxy_invalid_content_label')}
                 </label>
                 {editor.json ? (
-                  <textarea className={styles.textarea} rows={10} readOnly value={previewText} />
+                  <textarea className={styles.textarea} rows={10} readOnly value={maskEmails(previewText)} />
                 ) : (
-                  <pre className={styles.invalidPreview}>{invalidContentPreview}</pre>
+                  <pre className={styles.invalidPreview}>{maskEmails(invalidContentPreview)}</pre>
                 )}
               </div>
               {editor.json && (
