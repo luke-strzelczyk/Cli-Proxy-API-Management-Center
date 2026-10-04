@@ -84,6 +84,7 @@ export function CodexQuotaBody({ quota, classes }: QuotaBodyProps<CodexQuotaStat
 
   return (
     <>
+      <div className="lgb-quota-meta">
       {(planLabel ||
         expiryDisplay ||
         creditsUnlimited ||
@@ -125,6 +126,8 @@ export function CodexQuotaBody({ quota, classes }: QuotaBodyProps<CodexQuotaStat
           )}
         </div>
       )}
+      </div>
+      <div className="lgb-quota-windows">
       {rateLimitResetCredits.length > 0 ? (
         <div className={classes.codexResetCredits}>
           <div className={classes.codexResetCreditsTitle}>
@@ -207,6 +210,7 @@ export function CodexQuotaBody({ quota, classes }: QuotaBodyProps<CodexQuotaStat
           );
         })
       )}
+      </div>
     </>
   );
 }

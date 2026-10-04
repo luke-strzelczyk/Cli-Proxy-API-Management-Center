@@ -1,4 +1,5 @@
 import { useState, type CSSProperties } from 'react';
+import { maskEmails } from '@/utils/lgbMask';
 import { getAuthFileRefreshKey } from '@/features/authFiles/manualRefresh';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/Button';
@@ -112,7 +113,14 @@ export function AuthFileCard(props: AuthFileCardProps) {
   const weightValue = Number.isSafeInteger(file.weight) ? file.weight : undefined;
   const noteValue = typeof file.note === 'string' ? file.note.trim() : '';
   // 主行显示账号（email/项目 ID），文件名降为满卡宽的 mono 副行
-  const identity = deriveAuthFileIdentity(file);
+  // lgb: addresses are masked wherever a credential is listed (see utils/lgbMask)
+  const rawIdentity = deriveAuthFileIdentity(file);
+  const identity = {
+    ...rawIdentity,
+    primary: maskEmails(rawIdentity.primary),
+    secondary: rawIdentity.secondary ? maskEmails(rawIdentity.secondary) : rawIdentity.secondary,
+    fullName: rawIdentity.fullName ? maskEmails(rawIdentity.fullName) : rawIdentity.fullName,
+  };
 
   // 挂载时捕获一次入场延迟：父级随后传 null 也不会中断已开始的动画
   const [mountEntranceDelayMs] = useState<number | null>(entranceDelayMs ?? null);
@@ -138,8 +146,8 @@ export function AuthFileCard(props: AuthFileCardProps) {
             checked={selected}
             onChange={() => onToggleSelect(file.name)}
             className={styles.selection}
-            ariaLabel={t('auth_files.card_select', { name: file.name })}
-            title={t('auth_files.card_select', { name: file.name })}
+            ariaLabel={t('auth_files.card_select', { name: maskEmails(file.name) })}
+            title={t('auth_files.card_select', { name: maskEmails(file.name) })}
           />
         )}
         <h3 className={styles.identity}>

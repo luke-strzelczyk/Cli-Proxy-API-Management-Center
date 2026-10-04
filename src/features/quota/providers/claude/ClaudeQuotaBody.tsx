@@ -25,6 +25,7 @@ export function ClaudeQuotaBody({ quota, classes }: QuotaBodyProps<ClaudeQuotaSt
 
   return (
     <>
+      <div className="lgb-quota-meta">
       {planType && (
         <div className={classes.codexPlan}>
           <span className={classes.codexPlanLabel}>{t('claude_quota.plan_label')}</span>
@@ -39,6 +40,8 @@ export function ClaudeQuotaBody({ quota, classes }: QuotaBodyProps<ClaudeQuotaSt
           </span>
         </div>
       )}
+      </div>
+      <div className="lgb-quota-windows">
       {windows.length === 0 ? (
         <div className={classes.quotaMessage}>{t('claude_quota.empty_windows')}</div>
       ) : (
@@ -78,6 +81,7 @@ export function ClaudeQuotaBody({ quota, classes }: QuotaBodyProps<ClaudeQuotaSt
           );
         })
       )}
+      </div>
     </>
   );
 }

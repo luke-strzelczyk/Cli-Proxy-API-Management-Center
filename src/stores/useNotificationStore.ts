@@ -4,6 +4,7 @@
  */
 
 import { create } from 'zustand';
+import { maskEmails } from '@/utils/lgbMask';
 import type { ReactNode } from 'react';
 import type { Notification, NotificationType } from '@/types';
 import { generateId } from '@/utils/helpers';
@@ -42,6 +43,7 @@ export const useNotificationStore = create<NotificationState>((set) => ({
   },
 
   showNotification: (message, type = 'info', duration = NOTIFICATION_DURATION_MS) => {
+    message = maskEmails(message); // lgb: toasts quote file names — never the full address
     const id = generateId();
     const notification: Notification = {
       id,
