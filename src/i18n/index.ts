@@ -11,7 +11,6 @@ import ru from './locales/ru.json';
 import vi from './locales/vi.json';
 import ko from './locales/ko.json';
 import tr from './locales/tr.json';
-import { getInitialLanguage } from '@/utils/language';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -23,8 +22,9 @@ i18n.use(initReactI18next).init({
     ko: { translation: ko },
     tr: { translation: tr },
   },
-  lng: getInitialLanguage(),
-  fallbackLng: 'zh-CN',
+  // letsgobold: English only — no browser detection, no switcher (lgb.scss hides it)
+  lng: 'en',
+  fallbackLng: 'en',
   interpolation: {
     escapeValue: false, // React 已经转义
   },

@@ -315,3 +315,7 @@ img[alt^='CPAMC'],
 @media (prefers-reduced-motion: reduce) {
   [class*='loginCard'] * { transition: none !important; animation: none !important; }
 }
+
+// English only: the language switcher is hidden on the sign-in card and in the top bar
+[class*='languageSelect'],
+.language-menu { display: none !important; }
