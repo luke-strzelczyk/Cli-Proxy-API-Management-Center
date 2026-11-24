@@ -67,11 +67,10 @@
     "subtitle": "console"
   },
   "login": {
-    "subtitle": "Management console",
     "connection_current": "Connected to",
     "connection_edit": "Change",
     "connection_done": "Done",
-    "connection_auto_hint": "",
+    "connection_auto_hint": "The system will automatically use the current URL for connection",
     "custom_connection_label": "Use a different server",
     "custom_connection_placeholder": "Eg: https://example.com:8317",
     "custom_connection_hint": "By default the current URL is used. Override it here if needed.",
